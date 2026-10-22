@@ -5,7 +5,11 @@ A small command-line client for viewing recent Emergency Alert System (EAS) aler
 CAR Monitor is written in Python. It should work on most Linux distributions that provide Python 3 and the `requests` library. **You do not need Git, `yay`, or an AUR account to use it.**
 
 > CAR Monitor is an independent community project and is not affiliated with or endorsed by GWES or the CAR service. Alert data and API availability are controlled by the service.
-
+## TL;DR 
+1. Use your distro's package manager to install python and python-requests.
+2. Make sure you have the car.py file, otherwise you won't have a script to run!
+3a. Use the command python or python3 to run the car.py file.
+3b. Make the car.py file executable and run car. This is capable by doing sudo chmod +x car or by doing sudo install -Dm755 car /usr/local/bin/car.
 ## Features
 
 - View recent alerts from the CAR API
@@ -136,8 +140,9 @@ car
 System-wide installation requires administrator permissions. Alternatively, keep running it with `python3 car`; no system-wide installation is needed.
 
 ## Arch Linux AUR (optional)
+PS: If you have an AUR account, I would really appreciate it if you would upload this to the AUR repository! It helps people with Arch (and its other distros!) access this package without having to go through the hells of git.
 
-If the package is published on the AUR, Arch Linux users with an AUR helper such as `yay` may be able to install it with:
+If the package is ever published on the AUR, Arch Linux users with an AUR helper such as `yay` may be able to install it with:
 
 ```sh
 yay -S car-monitor
