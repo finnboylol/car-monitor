@@ -1,4 +1,4 @@
-# CAR Monitor 📡
+# CAR Monitor
 
 A small command-line client for viewing recent Emergency Alert System (EAS) alerts from the [GWES Central Alert Repository (CAR) API v2](https://alerts.globaleas.org/).
 
