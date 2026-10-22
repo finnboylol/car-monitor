@@ -74,6 +74,10 @@ def main():
     )
     args = parser.parse_args()
 
+    if len(sys.argv) == 1:
+        parser.print_help()
+        return 0
+
     if args.page < 1:
         parser.error("--page must be at least 1")
     if args.limit < 1:
