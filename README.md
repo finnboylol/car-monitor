@@ -140,7 +140,7 @@ car
 System-wide installation requires administrator permissions. Alternatively, keep running it with `python3 car`; no system-wide installation is needed.
 
 ## Arch Linux AUR (optional)
-PS: If you have an AUR account, I would really appreciate it if you would upload this to the AUR repository! It helps people with Arch (and its other distros!) access this package without having to go through the hells of git.
+(If you have an AUR account, I would really appreciate it if you would upload this to the AUR repository! It helps people with Arch (and its other distros!) access this package without having to go through the hells of git.)
 
 If the package is ever published on the AUR, Arch Linux users with an AUR helper such as `yay` may be able to install it with:
 
