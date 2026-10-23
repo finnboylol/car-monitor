@@ -22,12 +22,19 @@ def fetch_alerts(page):
     data = response.json()
 
     if not isinstance(data, list):
-        raise ValueError("CAR API returned an unexpected response (expected a JSON list).")
+        raise ValueError(
+            "CAR API returned an unexpected response (expected a JSON list)."
+        )
     return data
 
 
 def alert_key(alert):
-    return str(alert.get("hash") or alert.get("id") or alert.get("cacheKey") or repr(alert))
+    return str(
+        alert.get("hash")
+        or alert.get("id")
+        or alert.get("cacheKey")
+        or repr(alert)
+    )
 
 
 def display(alerts, page):
@@ -54,29 +61,38 @@ def display(alerts, page):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Browse recent alerts from the GWES Central Alert Repository."
+        prog="car",
+        description="Browse recent alerts from the GWES Central Alert Repository.",
     )
     parser.add_argument(
-        "--page", type=int, default=1,
+        "--page",
+        type=int,
+        default=1,
         help="Page number to retrieve (10 alerts per page; default: 1)",
     )
     parser.add_argument(
-        "--limit", type=int, default=10,
+        "--limit",
+        type=int,
+        default=10,
         help="Maximum number of alerts to display (default: 10)",
     )
     parser.add_argument(
-        "--type", dest="alert_type",
+        "--type",
+        dest="alert_type",
         help="Only show this alert type, e.g. RWT, SVR, TOR or CEM",
     )
     parser.add_argument(
-        "--watch", action="store_true",
+        "--watch",
+        action="store_true",
         help=f"Watch the selected page for new alerts (refresh every {REFRESH_SECONDS} seconds)",
     )
-    args = parser.parse_args()
 
+    # Running with no arguments should show help instead of fetching alerts.
     if len(sys.argv) == 1:
         parser.print_help()
         return 0
+
+    args = parser.parse_args()
 
     if args.page < 1:
         parser.error("--page must be at least 1")
@@ -99,8 +115,7 @@ def main():
 
             if args.watch:
                 if first_pass:
-                    current = alerts[:args.limit]
-                    display(current, args.page)
+                    display(alerts[:args.limit], args.page)
                     seen.update(alert_key(alert) for alert in alerts)
                     first_pass = False
                 else:
